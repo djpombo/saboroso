@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html>
+
+<%- include("head"); -%>
+
+<body>
+
+	<div class="gtco-loader"></div>
+
+	<div id="page">
+
+        <%- include("header-menu") -%>
+        
+        <!-- Primeiro testa o tipo da variavel, se vir undefined, pula pro else, entao nao precisa passar false para todas as outras-->
+        <%  if((typeof isHome === 'boolean') && (isHome)) { %>
+            <%- include("header-index") -%>
+
+        <% } else { %>   
+            <%- include("header") -%>
+            
+        <%  } %>
+        
+        

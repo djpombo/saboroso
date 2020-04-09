@@ -1,0 +1,37 @@
+
+<%- include("inc/page-header") -%>
+        
+        <%-  include("inc/content/form") -%>
+	
+
+<%- include("inc/page-footer") -%>
+<!-- HcodeGrid inclusao -->
+<script src="/public/js/hcode-grid.js"></script>
+
+<script>
+
+        new HcodeGrid({
+          
+          deleteUrl: '/admin/reservations/${data.id}',
+          deleteConfirm: 'Deseja excluir a reserva de ${data.name} do dia ${moment(data.date).format("DD-MM-YY")}?',
+          onUpdateLoad: (form, name, data)=>{
+             //como o input pode vir com campos a mais que no form, pegar somente os mesmo
+             let input = form.querySelector(`[name=${name}]`);
+              
+              switch(name){
+              
+              case 'date':
+              if(input) input.value = moment(data[name]).format("YYYY-MM-DD");
+              break;
+                         
+              default: 
+              if(input) input.value = data[name];
+  
+              }
+  
+          }
+          
+          
+        });
+</script>
+
